@@ -534,7 +534,7 @@ class ErrorDuringExecution < RuntimeError
       status
     end
 
-    redacted_cmd = redact_secrets(cmd.shelljoin.gsub('\=', "="), secrets)
+    redacted_cmd = redact_secrets(cmd&.shelljoin&.gsub('\=', "="), secrets)
     s = +"Failure while executing; `#{redacted_cmd}` exited with #{exitstatus}."
 
     unless [*output].empty?
