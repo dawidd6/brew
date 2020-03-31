@@ -491,6 +491,10 @@ module GitHub
       curl_args = { header: "Authorization: token #{token}" }
     end
 
+    p api_credentials
+    p api_credentials_type
+    p curl_args
+
     # Download the artifact as a zip file and unpack it into `dir`. This is
     # preferred over system `curl` and `tar` as this leverages the Homebrew
     # cache to avoid repeated downloads of (possibly large) bottles.
