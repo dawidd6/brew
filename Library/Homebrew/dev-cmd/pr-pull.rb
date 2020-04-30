@@ -39,6 +39,8 @@ module Homebrew
              description: "Download artifacts with the specified name (default: bottles)."
       flag   "--bintray-org=",
              description: "Upload to the specified Bintray organisation (default: homebrew)."
+      flag   "--bintray-extra-data-args=",
+             description: "JSON object with extra data to send to Bintray upon package creation."
       flag   "--tap=",
              description: "Target tap repository (default: homebrew/core)."
       switch :verbose
@@ -168,6 +170,7 @@ module Homebrew
     bintray_user = ENV["HOMEBREW_BINTRAY_USER"]
     bintray_key = ENV["HOMEBREW_BINTRAY_KEY"]
     bintray_org = args.bintray_org || "homebrew"
+    bintray_extra_data_args = JSON.parse(args.bintray_extra_data_args || "{}")
 
     if bintray_user.blank? || bintray_key.blank?
       odie "Missing HOMEBREW_BINTRAY_USER or HOMEBREW_BINTRAY_KEY variables!" if !args.dry_run? && !args.no_upload?
@@ -215,7 +218,7 @@ module Homebrew
           if Homebrew.args.dry_run?
             puts "Upload bottles described by these JSON files to Bintray:\n  #{Dir["*.json"].join("\n  ")}"
           else
-            bintray.upload_bottle_json Dir["*.json"], publish_package: !args.no_publish?
+            bintray.upload_bottle_json Dir["*.json"], publish_package: !args.no_publish?, extra_data_args: bintray_extra_data_args
           end
         end
       end
