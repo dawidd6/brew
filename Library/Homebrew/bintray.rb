@@ -56,7 +56,7 @@ class Bintray
     %w[homebrew linuxbrew].include? org
   end
 
-  def create_package(repo:, package:, **extra_data_args)
+  def create_package(repo:, package:, extra_data_args:)
     url = "#{API_URL}/packages/#{@bintray_org}/#{repo}"
     data = { name: package, public_download_numbers: true }
     data[:public_stats] = official_org?
@@ -98,7 +98,7 @@ class Bintray
     end
   end
 
-  def upload_bottle_json(json_files, publish_package: false)
+  def upload_bottle_json(json_files, publish_package: false, extra_data_args:)
     bottles_hash = json_files.reduce({}) do |hash, json_file|
       hash.deep_merge(JSON.parse(IO.read(json_file)))
     end
@@ -128,7 +128,7 @@ class Bintray
 
         if !formula_packaged[formula_name] && !package_exists?(repo: bintray_repo, package: bintray_package)
           odebug "Creating package #{@bintray_org}/#{bintray_repo}/#{bintray_package}"
-          create_package repo: bintray_repo, package: bintray_package
+          create_package repo: bintray_repo, package: bintray_package, extra_data_args: extra_data_args
           formula_packaged[formula_name] = true
         end
 
