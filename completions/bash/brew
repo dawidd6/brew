@@ -231,40 +231,6 @@ _brew___prefix() {
   __brew_complete_formulae
 }
 
-_brew___repo() {
-  local cur="${COMP_WORDS[COMP_CWORD]}"
-  case "${cur}" in
-    -*)
-      __brewcomp "
-      --debug
-      --help
-      --quiet
-      --verbose
-      "
-      return
-      ;;
-    *) ;;
-  esac
-  __brew_complete_tapped
-}
-
-_brew___repository() {
-  local cur="${COMP_WORDS[COMP_CWORD]}"
-  case "${cur}" in
-    -*)
-      __brewcomp "
-      --debug
-      --help
-      --quiet
-      --verbose
-      "
-      return
-      ;;
-    *) ;;
-  esac
-  __brew_complete_tapped
-}
-
 _brew__s() {
   local cur="${COMP_WORDS[COMP_CWORD]}"
   case "${cur}" in
@@ -2620,8 +2586,6 @@ _brew() {
     --config) _brew___config ;;
     --env) _brew___env ;;
     --prefix) _brew___prefix ;;
-    --repo) _brew___repo ;;
-    --repository) _brew___repository ;;
     -S) _brew__s ;;
     abv) _brew_abv ;;
     analytics) _brew_analytics ;;

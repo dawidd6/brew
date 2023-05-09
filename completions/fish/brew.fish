@@ -248,22 +248,6 @@ __fish_brew_complete_arg '--prefix' -l verbose -d 'Make some output more verbose
 __fish_brew_complete_arg '--prefix' -a '(__fish_brew_suggest_formulae_all)'
 
 
-__fish_brew_complete_cmd '--repo' 'Display where Homebrew\'s git repository is located'
-__fish_brew_complete_arg '--repo' -l debug -d 'Display any debugging information'
-__fish_brew_complete_arg '--repo' -l help -d 'Show this message'
-__fish_brew_complete_arg '--repo' -l quiet -d 'Make some output more quiet'
-__fish_brew_complete_arg '--repo' -l verbose -d 'Make some output more verbose'
-__fish_brew_complete_arg '--repo' -a '(__fish_brew_suggest_taps_installed)'
-
-
-__fish_brew_complete_cmd '--repository' 'Display where Homebrew\'s git repository is located'
-__fish_brew_complete_arg '--repository' -l debug -d 'Display any debugging information'
-__fish_brew_complete_arg '--repository' -l help -d 'Show this message'
-__fish_brew_complete_arg '--repository' -l quiet -d 'Make some output more quiet'
-__fish_brew_complete_arg '--repository' -l verbose -d 'Make some output more verbose'
-__fish_brew_complete_arg '--repository' -a '(__fish_brew_suggest_taps_installed)'
-
-
 __fish_brew_complete_cmd '-S' 'Perform a substring search of cask tokens and formula names for text'
 __fish_brew_complete_arg '-S' -l archlinux -d 'Search for text in the given database'
 __fish_brew_complete_arg '-S' -l cask -d 'Search for casks'

@@ -334,28 +334,6 @@ _brew___prefix() {
     '*::formula:__brew_formulae'
 }
 
-# brew --repo
-_brew___repo() {
-  _arguments \
-    '--debug[Display any debugging information]' \
-    '--help[Show this message]' \
-    '--quiet[Make some output more quiet]' \
-    '--verbose[Make some output more verbose]' \
-    - tap \
-    '*::tap:__brew_any_tap'
-}
-
-# brew --repository
-_brew___repository() {
-  _arguments \
-    '--debug[Display any debugging information]' \
-    '--help[Show this message]' \
-    '--quiet[Make some output more quiet]' \
-    '--verbose[Make some output more verbose]' \
-    - tap \
-    '*::tap:__brew_any_tap'
-}
-
 # brew -S
 _brew__s() {
   _arguments \
