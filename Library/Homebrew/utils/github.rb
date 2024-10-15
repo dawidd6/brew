@@ -711,6 +711,8 @@ module GitHub
     tap_remote_repo = info[:tap_remote_repo] || tap.full_name
     pr_message = info[:pr_message]
 
+    ohai tap_remote_repo
+
     sourcefile_path.parent.cd do
       require "utils/popen"
       git_dir = Utils.popen_read("git", "rev-parse", "--git-dir").chomp
